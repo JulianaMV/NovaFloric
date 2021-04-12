@@ -1,0 +1,160 @@
+
+body{
+    font-weight: bold;
+    margin: 0px;
+    padding: 0;
+  }
+
+  h1{
+    padding-top: 100px;
+    padding-bottom: 70px;
+    text-align: center;
+    margin:0px
+  }
+
+  td {
+    padding: 5px 20px;
+    background: #fce4ec;
+  }
+
+  input{
+    margin-bottom: 10px;
+    width: 100%;
+    height: 25px;
+  }
+
+  button {
+    margin: 0 5px;
+    font-weight: bold;
+    border-radius: 10px;
+    background:#BFB99B;
+    border: 0px;
+    padding: 5px;
+  }
+
+  *:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .content{
+    
+    background:#F2E18D;
+    padding: 10px;
+  }
+
+  .con{
+    background:#A3CDD9;
+    padding: 10px;
+    
+  }
+
+  .cont{
+    width:500px;
+    display: flex;
+    margin: auto;
+    margin-bottom: 70px;
+    margin-top: -20px;
+  }
+
+  .card{
+    background: #D95F69;
+    width: 120px;
+    height: 100px;
+    font-Weight: bold;
+    border-Radius: 15px;
+    margin: 25px;
+    padding: 15px;
+    display: flex;
+    flex-Direction: column;
+    justify-Content: space-between;
+    align-Content: center;
+    text-Align: center;
+    text-transform: capitalize;
+  }
+
+  .cardsDiv{
+    display: flex;
+    flex-Wrap: wrap;
+    justify-content:center;
+  }
+
+.oi{
+    display: flex;
+}
+
+.tdd{
+  width: 170px;
+}
+
+.tddd{
+  width: 90px;
+}
+
+.tdddd{
+  width: 80px;
+  text-Align: center
+}
+
+
+ul{
+  margin:0px
+}
+
+
+.buq{
+  background:#A3CDD9;
+  padding: 10px;
+  margin:auto;
+}
+
+.buques{
+  background-color: #F29544;
+}
+
+p{
+  margin: 5px;
+  text-align: center;
+}
+
+i{
+  margin-right: 100px;
+  
+}
+
+.options{ 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom:50px;
+}
+
+.itens{
+  background-color: #F29544;
+  width: 200px;
+  margin: 15px;
+  text-transform: capitalize;
+  border-radius: 5px;
+  justify-items: center;
+  padding:8px;
+}
+
+.table{
+  margin:auto;
+  padding-bottom: 30px;
+}
+
+h3, h4{
+  text-align:center;
+}
+
+.butDiv{
+  width:500px;
+  margin:auto;
+  padding: 20px;
+  justify-content: center;
+}
+
+.butbuq{
+  margin-left: 180px;
+}

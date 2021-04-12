@@ -1,0 +1,32 @@
+
+
+const ACTIONS = {
+  buques: {
+    ADD:  "BUQUE_ADD",
+    LOAD: 'BUQUE_LOAD',
+    COMMIT: 'BUQUE_COMMIT',
+    ROLLBACK: 'BUQUE_ROLLBACK'
+  },
+
+  flowers: {
+    LOAD: 'FLOWERS_LOAD',
+    COMMIT: 'FLOWERS_COMMIT',
+    ROLLBACK: 'FLOWERS_ROLLBACK'
+  },
+
+  flower: {
+    ADD: 'FLOWER_ADD',
+    COMMIT: 'FLOWER_COMMIT',
+    ROLLBACK: 'FLOWER_ROLLBACK'
+  },
+
+  local: {
+    ADD: 'LOCAL_ADD',
+    COMMIT: 'LOCAL_COMMIT',
+    ROLLBACK: 'LOCAL_ROLLBACK',
+    REMOVE: 'LOCAL_REMOVE',
+    CLEAR: 'LOCAL_CLEAR'
+  }
+}
+
+export default ACTIONS;

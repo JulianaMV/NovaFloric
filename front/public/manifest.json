@@ -1,0 +1,45 @@
+{
+    "name": "Floricultura",
+    "short_name": "Floric",
+    "theme_color": "#2a0044",
+    "background_color": "#2a0044",
+    "display": "standalone",
+    "start_url": "/",
+    "icons": [
+      {
+        "src": "./img/i36.png",
+        "sizes": "36x36",
+        "type": "image/png"
+      },
+      {
+        "src": "./img/i48.png",
+        "sizes": "48x48",
+        "type": "image/png"
+      },
+      {
+        "src": "./img/i57.png",
+        "sizes": "57x57",
+        "type": "image/png"
+      },
+      {
+        "src": "./img/i72.png",
+        "sizes": "72x72",
+        "type": "image/png"
+      },
+      {
+        "src": "./img/i72.png",
+        "sizes": "72x72",
+        "type": "image/png"
+      },
+      {
+        "src": "./img/i96.png",
+        "sizes": "96x96",
+        "type": "image/png"
+      },
+      {
+        "src": "./img/i144.png",
+        "sizes": "144x144",
+        "type": "image/png"
+      }    
+    ]
+  }
