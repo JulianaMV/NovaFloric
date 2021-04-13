@@ -67,6 +67,34 @@ router.get('/g', async (req, res) => {
 });
 
 
+//Deletar
+
+router.delete('/:flowerId', async (req, res) => {
+	try {
+		await Flower.findByIdAndRemove(req.params.flowerId);
+		return res.send('sucess in remove flower');
+	} catch (err) {
+		return res.status(400).send({ error: 'Error deleting flower' });
+	}
+
+	//pre.delete
+});
+
+//Atualizar
+
+router.put('/:flowerId', async (req, res) => {
+	try {
+		const { title, price } = req.body;
+
+		const flower = await Flower.findByIdAndUpdate(req.params.flowerId, {
+			title,
+			price
+		}, { new: true });
+		return res.send({ flower});
+	} catch (err) {
+		return res.status(400).send({ error: 'Error updating flower' });
+	}
+});
 
 
 

@@ -40,6 +40,25 @@ router.delete('/:buqueId', async (req, res) => {
 	} catch (err) {
 		return res.status(400).send({ error: 'Error deleting buque' });
 	}
+
+	//pre.delete
 });
+
+//Atualizar
+
+router.put('/:buqueId', async (req, res) => {
+	try {
+		const { title, flowers } = req.body;
+
+		const buque = await Buq.findByIdAndUpdate(req.params.buqueId, {
+			title,
+			flowers
+		}, { new: true });
+		return res.send({ buque});
+	} catch (err) {
+		return res.status(400).send({ error: 'Error updating buque' });
+	}
+});
+
 
 module.exports = app => app.use('/buq', router);

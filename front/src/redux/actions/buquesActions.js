@@ -57,7 +57,31 @@ const buquesActions = {
                 }
             }
         }
-    }
+    },
+    atualize:(buque)=>({
+        type: ACTIONS.buques.ATUALIZE,
+        payload: buque,
+        meta: { 
+            offline: { 
+                effect: { 
+                    url:'http://localhost:3010/buque/:buqueId',
+                    method:'PUT',
+                }
+            }
+        }
+    }),
+    delete:(buque)=>({
+        type: ACTIONS.buques.DELETE,
+        payload: buque,
+        meta: { 
+            offline: { 
+                effect: { 
+                    url:'http://localhost:3010/buque/:buqueId',
+                    method:'DELETE',
+                }
+            }
+        }
+    })
 }
 
 export default buquesActions;

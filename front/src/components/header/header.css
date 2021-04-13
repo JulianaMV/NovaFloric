@@ -54,18 +54,16 @@ a{
 }
 
 label[for = "bt_menu"]{
-    /* padding: 5px; */
     position: absolute;
-    background-color: #222;
+    background-color: #812F33;
     color: #fff;
     font-family: 'Arial';
     text-align: center;
     text-justify: auto;
-    font-size: 40px;
+    font-size: 25px;
     cursor: pointer;
-    width: 70px;
-    height: 70px;
-    
+    width: 40px;
+    height: 40px;
     display: none;
 }
 
@@ -92,28 +90,25 @@ label[for = "bt_menu"]{
     }
 
     #bt_menu:checked ~ #Header-site{
-        margin-left: 0;
+        margin-left: 42px;
     }
 
     #Header-site {
-        
-        margin-top: 80px;
+        margin-top: 5px;
         position: absolute;
         padding: 0;
-
-
+        width:40%;
+        border-radius: 5px !important;
         margin-left: -100%;
         transition: all .4s;
     }
 
     #buttons{
         position: static;
-        
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-
-        margin: 0px 0 0 -15px;
+        margin: 0px 0 0 15px;
         padding: 0;
 
         
@@ -121,7 +116,7 @@ label[for = "bt_menu"]{
 
 
     li.items-menu{
-        margin: 15px 10px;
+        margin: 5px 5px;
     }
 
 }

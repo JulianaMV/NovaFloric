@@ -17,6 +17,10 @@ body{
     background: #fce4ec;
   }
 
+  a{
+    color: black;
+  }
+
   input{
     margin-bottom: 10px;
     width: 100%;
@@ -157,4 +161,9 @@ h3, h4{
 
 .butbuq{
   margin-left: 180px;
+}
+
+.contdet{
+  background-color: #F29544;
+  height:100vh;
 }

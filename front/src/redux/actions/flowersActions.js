@@ -48,7 +48,31 @@ const flowersActions = {
                 }
             }
         }
-    }
+    },
+    atualize:(flower)=>({
+        type: ACTIONS.flower.ATUALIZE,
+        payload: flower,
+        meta: { 
+            offline: { 
+                effect: { 
+                    url:'http://localhost:3010/flower/:flowerId',
+                    method:'PUT',
+                }
+            }
+        }
+    }),
+    delete:(flower)=>({
+        type: ACTIONS.flower.DELETE,
+        payload: flower,
+        meta: { 
+            offline: { 
+                effect: { 
+                    url:'http://localhost:3010/flower/:flowerId',
+                    method:'DELETE',
+                }
+            }
+        }
+    })
 }
 
 export default flowersActions;

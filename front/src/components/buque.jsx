@@ -2,12 +2,19 @@ import React from 'react'
 import { useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import buquesThunks from '../redux/thunks/buquesThunks'
+import { useHistory } from 'react-router-dom';
+
 
 
 
 export default function Buques(){
 
 const dispatch = useDispatch();
+const history = useHistory();  
+const detailsBuq = (id) => {
+  history.push(`/detailsBuq/`);
+};
+
 
 const buques = useSelector((state)=> state.buques);
 
@@ -24,14 +31,18 @@ useEffect(()=>{
             <p className="simb">
             {item.isOffline ? <i className="fas fa-circle-notch"></i> : <i className="far fa-circle"></i> }
             </p>
-            <p className="titleflower">{item.title}</p>
+            <p className="titleBuq">{item.title}</p>
+            <button onClick={() => detailsBuq(item._id)}>
+              detalhes
+            </button>   
             {item.flowers.map(flower => {
               return (
                 <div key={flower._id}>
                   <p>{flower.title}</p>
-                </div>
+                </div>          
               )
             })}
+
           </div>
         ))}
         </div>

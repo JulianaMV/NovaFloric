@@ -26,6 +26,11 @@ useEffect(()=>{
                     </p>
                     <p className="titleflower">{item.title}</p>
                     <p>R$ {item.price.toFixed(2)}</p>
+                    <button>
+                        <a alt='details' href='./detailsFlo'>
+                            Detalhes
+                        </a> 
+                    </button>
                 </div>
             ))}
             </div>

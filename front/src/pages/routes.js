@@ -1,20 +1,24 @@
 import React from  'react'
-import {Router, Switch, Route} from 'react-router-dom'
+import { BrowserRouter, Switch, Route} from 'react-router-dom'
 
 import {history} from './history'
 import FlowersPag from './flower'
 import BuquePag from './buque'
+import DetailsBuqPag from './detailsBuq'
+import DetailsFloPag from './detailsFlo'
 
 
 const Routes = () => {
 
     return(
-    <Router history={history}>
+    <BrowserRouter history={history}>
         <Switch>
             <Route exact path="/" component={FlowersPag}/>
             <Route exact path="/buque"component={BuquePag}/>
+            <Route exact path="/detailsBuq"component={DetailsBuqPag}/>
+            <Route exact path="/detailsFlo"component={DetailsFloPag}/>
         </Switch>
-    </Router>
+    </BrowserRouter>
     );
 }
 
