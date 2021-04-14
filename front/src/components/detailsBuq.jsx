@@ -1,7 +1,9 @@
-import React, { useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import 'regenerator-runtime/runtime'
-import { useDispatch} from 'react-redux'
+import { useDispatch, useSelector} from 'react-redux'
+import { useParams } from "react-router-dom";
 import buqueActions from '../redux/actions/buquesActions'
+import buquesThunks from '../redux/thunks/buquesThunks'
 
 
 
@@ -10,10 +12,24 @@ export default function Details(){
     const [flowers, setFlowers] = useState();
     const dispatch = useDispatch();
 
+    const {id} = useParams();
+    console.log(id)
+
+    useEffect(()=>{
+        dispatch(buquesThunks.loadOne(id))
+    },[dispatch, id])
+
+
+    const state = useSelector((state) => state.buques.find((value)=>{
+        return value._id = id;
+    }),[id]);
+
+    console.log(state)
+
     async function handleBuque (e) {
         e.preventDefault();
         try{
-            await dispatch(buqueActions.atualize({title,flowers}))
+            await dispatch(buqueActions.atualize({_id: id,title,flowers}))
             setTitle()
             setFlowers()
         }catch (error){
@@ -30,9 +46,14 @@ export default function Details(){
     }
     return(
         <div className='contdet'>
-            <h1 className='title'> Detalhe Buque</h1>
-            <div className='cardsDiv'>
-            <div className="formdiv">
+            <h1 className='title'> 
+            Detalhes {state.title}
+            <button className= 'trash' type="submit" 
+                onClick={handleDelete}>
+                <i className="fas fa-trash-alt"></i>
+            </button>
+            </h1>
+            <div className='cont'>
             <form className='formm'>
                     <input 
                     required
@@ -43,21 +64,29 @@ export default function Details(){
                      placeholder="Titulo" 
                      onChange={e=> setTitle(e.target.value)}
                     />
-                    <input
-                    required
-                     type="number" 
-                     name="price"
-                     id="price"
-                     className="form-control"
-                     placeholder="Flowers" 
-                     onChange={e=> setFlowers(e.target.value)}
-                    />
-                    <button type="submit" 
-                    onClick={handleBuque}>Atualizar buque</button>
-                     <button type="submit" 
-                    onClick={handleDelete}>Deletar buque</button>
-                </form>
+                <div className='space'>
+                    <p>
+                        
+                    </p>
                 </div>
+                <table className='table'>
+                    <tbody>
+                    {state.flowers.map((item)=>(
+                        <tr key={item._id}>
+                            <td>{item.title}</td>
+                            <td> R$ {(item.price * item.qtd).toFixed(2)}</td>
+                            <td> 
+                                <button >-</button> 
+                                {item.qtd}
+                                <button >+</button> 
+                            </td>
+                         </tr>
+                     ))}
+                    </tbody>
+                </table>
+                </form>
+                <button className='butPrin' type="submit" 
+                    onClick={handleBuque}>Atualizar buque</button>
             </div>
         </div>
     )

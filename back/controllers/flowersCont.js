@@ -66,6 +66,18 @@ router.get('/g', async (req, res) => {
 	}
 });
 
+//pegar um
+
+router.get('/:flowerId', async (req, res) => {
+	try {
+		const flowers = await Flower.findById(req.params.flowerId);
+
+		return res.send(flowers);
+	} catch (err) {
+		return res.status(400).send({ error: 'Error loading flower' });
+	}
+});
+
 
 //Deletar
 
@@ -76,8 +88,6 @@ router.delete('/:flowerId', async (req, res) => {
 	} catch (err) {
 		return res.status(400).send({ error: 'Error deleting flower' });
 	}
-
-	//pre.delete
 });
 
 //Atualizar

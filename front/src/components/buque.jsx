@@ -12,7 +12,7 @@ export default function Buques(){
 const dispatch = useDispatch();
 const history = useHistory();  
 const detailsBuq = (id) => {
-  history.push(`/detailsBuq/`);
+  history.push(`/detailsBuq/${id}`);
 };
 
 

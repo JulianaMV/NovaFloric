@@ -1,5 +1,7 @@
 var CACHE_NAME = 'static-v1';
 
+const self= this;
+
 self.addEventListener('install', function (event) {
   event.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
@@ -10,6 +12,8 @@ self.addEventListener('install', function (event) {
         '/app.js',
         '/manifest.js',
         '/vendor.js',
+        '/detailsBuq/:id',
+        '/detailsFlo/:id'
       ]);
     })
   )

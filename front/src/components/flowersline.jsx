@@ -23,7 +23,7 @@ useEffect(()=>{
                 <div key={item._id} className='itens'>
                     <p>{item.title}
                     {'   '}
-                     R$ {item.price.toFixed(2)}
+                     R$ {item.price},00
                      <button className='buttonitem'
                     onClick={()=> dispatch(localActions.add(item))}
                     >Add</button>

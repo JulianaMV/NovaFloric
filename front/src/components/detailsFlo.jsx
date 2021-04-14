@@ -1,7 +1,10 @@
-import React, { useState} from 'react'
+import React, { useState, useEffect} from 'react'
 import 'regenerator-runtime/runtime'
-import { useDispatch} from 'react-redux'
+import { useDispatch, useSelector} from 'react-redux'
 import flowersActions from '../redux/actions/flowersActions'
+import { useParams } from "react-router-dom";
+import flowersThunks from '../redux/thunks/flowersThunks'
+
 
 
 
@@ -9,11 +12,25 @@ export default function Details(){
     const [title, setTitle] = useState();
     const [price, setPrice] = useState();
     const dispatch = useDispatch();
+    const {id} = useParams();
+    console.log(id)
+
+    useEffect(()=>{
+        dispatch(flowersThunks.loadOne(id))
+    },[dispatch, id])
+
+
+    const state = useSelector((state) => state.flowers.find((value)=>{
+        return value._id = id;
+    }),[id]);
+
+    console.log(state)
+      
 
     async function handleFlower (e) {
         e.preventDefault();
         try{
-            await dispatch(flowersActions.atualize({title,price}))
+            await dispatch(flowersActions.atualize({_id: id, title, price}))
             setTitle()
             setPrice()
         }catch (error){
@@ -23,16 +40,22 @@ export default function Details(){
     async function handleDelete (e) {
         e.preventDefault();
         try{
-            await dispatch(flowersActions.delete())
+            await dispatch(flowersActions.delete({_id:id}))
         }catch (error){
             console.error(error);
         }
     }
+
+
     return(
         <div className='contdet'>
-            <h1 className='title'> Detalhe Flor</h1>
-            <div className='cardsDiv'>
-            <div className="formdiv">
+            <h1 className='title'> Detalhe Flor {state?.title}
+            <button className ='trash' type="submit" 
+                    onClick={handleDelete}>
+                        <i className="fas fa-trash-alt"></i>
+                </button>
+            </h1>
+            <div className='cont'>
             <form className='formm'>
                     <input 
                     required
@@ -40,7 +63,7 @@ export default function Details(){
                      name="title"
                      id="title"
                      className="form-control"
-                     placeholder="Flor" 
+                     placeholder={state?.title}
                      onChange={e=> setTitle(e.target.value)}
                     />
                     <input
@@ -49,16 +72,13 @@ export default function Details(){
                      name="price"
                      id="price"
                      className="form-control"
-                     placeholder="Preço" 
+                     placeholder= {state?.price}
                      onChange={e=> setPrice(e.target.value)}
                     />
-                    <button type="submit" 
-                    onClick={handleFlower}>Atualizar flor</button>
-                     <button type="submit" 
-                    onClick={handleDelete}>Deletar flor</button>
                 </form>
+                <button className='butPrin' type="submit" 
+                    onClick={handleFlower}>Atualizar flor</button>
                 </div>
-            </div>
         </div>
     )
 }

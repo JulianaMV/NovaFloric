@@ -30,7 +30,6 @@ const CreateFlowers = () => {
 
             <h1 className="title">Adicionar Flores</h1>
             <div className="cont" >
-            <div className="formdiv">
             <form className='formm'>
                     <input 
                     required
@@ -60,10 +59,9 @@ const CreateFlowers = () => {
                      onChange={e=> setImage(e.target.value)}
                       
                     /> */}
-                    <button type="submit" 
-                    onClick={handleFlower}>Criar flor</button>
                 </form>
-                </div>
+                <button className='butPrin' type="submit" 
+                    onClick={handleFlower}>Criar flor</button>
             </div>
         </div>
     )

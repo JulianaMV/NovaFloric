@@ -81,6 +81,30 @@ const buquesActions = {
                 }
             }
         }
+    }),
+    remove:(buque)=>({
+        type: ACTIONS.buques.REMOVE,
+        payload: buque,
+        meta: { 
+            offline: { 
+                effect: { 
+                    url:'http://localhost:3010/buque/:buqueId',
+                    method:'DELETE',
+                }
+            }
+        }
+    }),
+    loadOne:(buque)=>({
+        type: ACTIONS.buques.LOADONE,
+        payload: buque,
+        meta: { 
+            offline: { 
+                effect: { 
+                    url:`http://localhost:3010/buque/${buque._id}`,
+                    method:'GET',
+                }
+            }
+        }
     })
 }
 

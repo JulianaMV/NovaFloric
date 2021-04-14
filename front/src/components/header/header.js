@@ -11,7 +11,7 @@ const header = () => {
 
             <div id="Header-site" >
                 <ul id="buttons" >
-                <img alt='flor' src="flor.png"></img>
+                <img alt=' Flor' src="flor.png"></img>
                     <Link to="/">
                         <li className="items-menu" >Flores</li>
                     </Link>

@@ -2,18 +2,25 @@ import React from 'react'
 import { useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import flowersThunks from '../redux/thunks/flowersThunks'
+import { useHistory } from 'react-router-dom';
 
 
 
 export default function Flowers(){
 
 const dispatch = useDispatch();
+const history = useHistory(); 
 
 const flowers = useSelector((state)=> state.flowers);
 
 useEffect(()=>{
     dispatch(flowersThunks.load())
 },[dispatch])
+
+const detailsFlo = (id) => {
+    history.push(`/detailsFlo/${id}`);
+  };
+  
 
     return(
         <div className='content'>
@@ -25,12 +32,10 @@ useEffect(()=>{
                     {item.isOffline ? <i className="fas fa-circle-notch"></i> : <i className="far fa-circle"></i> }
                     </p>
                     <p className="titleflower">{item.title}</p>
-                    <p>R$ {item.price.toFixed(2)}</p>
-                    <button>
-                        <a alt='details' href='./detailsFlo'>
-                            Detalhes
-                        </a> 
-                    </button>
+                    <p>R$ {item.price},00</p>
+                    <button onClick={() => detailsFlo(item._id)}>
+                        detalhes
+                    </button>   
                 </div>
             ))}
             </div>

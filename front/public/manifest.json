@@ -27,11 +27,6 @@
         "type": "image/png"
       },
       {
-        "src": "./img/i72.png",
-        "sizes": "72x72",
-        "type": "image/png"
-      },
-      {
         "src": "./img/i96.png",
         "sizes": "96x96",
         "type": "image/png"

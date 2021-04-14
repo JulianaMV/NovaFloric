@@ -72,7 +72,7 @@ import localActions from '../redux/actions/localActions'
                      className="form-control"
                      onChange={e=> setBuqueName(e.target.value)}
             ></input>
-            <button className='butbuq' onClick={buqueCreate}>
+            <button className='butPrin' onClick={buqueCreate}>
                 Salvar Novo Buque
             </button>
             </div>

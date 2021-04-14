@@ -55,8 +55,9 @@ const flowersActions = {
         meta: { 
             offline: { 
                 effect: { 
-                    url:'http://localhost:3010/flower/:flowerId',
+                    url:`http://localhost:3010/flower/${flower._id}`,
                     method:'PUT',
+                    json: flower
                 }
             }
         }
@@ -67,12 +68,24 @@ const flowersActions = {
         meta: { 
             offline: { 
                 effect: { 
-                    url:'http://localhost:3010/flower/:flowerId',
+                    url:`http://localhost:3010/flower/${flower._id}`,
                     method:'DELETE',
                 }
             }
         }
+    }),
+    loadOne:(flower)=>({
+        type: ACTIONS.flower.LOADONE,
+        payload: flower,
+        meta: { 
+            offline: { 
+                effect: { 
+                    url:`http://localhost:3010/flower/${flower._id}`,
+                    method:'GET',
+                }
+            }
+        }
     })
-}
+ }
 
 export default flowersActions;

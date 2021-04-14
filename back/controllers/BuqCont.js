@@ -30,7 +30,17 @@ router.get('/', async (req, res) => {
 		return res.status(400).send({ error: 'Error loading buques' });
 	}
 });
+//pegar uma
 
+router.get('/:buqueId', async (req, res) => {
+	try {
+		const buques = await Buq.findById(req.params.buqueId);
+
+		return res.send(buques);
+	} catch (err) {
+		return res.status(400).send({ error: 'Error loading buque' });
+	}
+});
 //Deletar
 
 router.delete('/:buqueId', async (req, res) => {
@@ -41,7 +51,6 @@ router.delete('/:buqueId', async (req, res) => {
 		return res.status(400).send({ error: 'Error deleting buque' });
 	}
 
-	//pre.delete
 });
 
 //Atualizar
@@ -60,5 +69,15 @@ router.put('/:buqueId', async (req, res) => {
 	}
 });
 
+//Deletar
+
+router.delete('/:buqueId', async (req, res) => {
+	try {
+		await Buq.findByIdAndRemove(req.params.buqueId);
+		return res.send('sucess in remove buque');
+	} catch (err) {
+		return res.status(400).send({ error: 'Error deleting buque' });
+	}
+});
 
 module.exports = app => app.use('/buq', router);

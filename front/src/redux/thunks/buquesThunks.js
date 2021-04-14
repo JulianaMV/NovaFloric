@@ -16,6 +16,12 @@ const buqueThunks = {
     
     
     return dispatch(buquesActions.load(data));
+  },
+  loadOne: (id) => async (dispatch) => {
+
+    const flower = await api.get(`/buq/${id}`) 
+    console.log(flower)
+    return dispatch(buquesActions.loadOne(flower.data));
   }
 
 };
