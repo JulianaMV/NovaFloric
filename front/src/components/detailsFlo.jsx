@@ -4,6 +4,7 @@ import { useDispatch, useSelector} from 'react-redux'
 import flowersActions from '../redux/actions/flowersActions'
 import { useParams } from "react-router-dom";
 import flowersThunks from '../redux/thunks/flowersThunks'
+import { useHistory } from 'react-router-dom';
 
 
 
@@ -11,9 +12,12 @@ import flowersThunks from '../redux/thunks/flowersThunks'
 export default function Details(){
     const [title, setTitle] = useState();
     const [price, setPrice] = useState();
+    const history = useHistory();  
     const dispatch = useDispatch();
     const {id} = useParams();
     console.log(id)
+
+
 
     useEffect(()=>{
         dispatch(flowersThunks.loadOne(id))
@@ -21,7 +25,7 @@ export default function Details(){
 
 
     const state = useSelector((state) => state.flowers.find((value)=>{
-        return value._id = id;
+        return value._id === id;
     }),[id]);
 
     console.log(state)
@@ -33,17 +37,19 @@ export default function Details(){
             await dispatch(flowersActions.atualize({_id: id, title, price}))
             setTitle()
             setPrice()
+            history.push(`/`);
+            //alert("atualizada com sucesso!");
+          
         }catch (error){
             console.error(error);
         }
     }
     async function handleDelete (e) {
         e.preventDefault();
-        try{
-            await dispatch(flowersActions.delete({_id:id}))
-        }catch (error){
-            console.error(error);
-        }
+        const res = await dispatch(flowersActions.delete({_id:id}))
+        console.log(res)    
+        history.push(`/`);
+
     }
 
 

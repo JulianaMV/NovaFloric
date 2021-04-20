@@ -35,13 +35,6 @@ useEffect(()=>{
             <button onClick={() => detailsBuq(item._id)}>
               detalhes
             </button>   
-            {item.flowers.map(flower => {
-              return (
-                <div key={flower._id}>
-                  <p>{flower.title}</p>
-                </div>          
-              )
-            })}
 
           </div>
         ))}
@@ -49,3 +42,11 @@ useEffect(()=>{
       </div>
     )
 }
+
+// {item.flowers.map(flower => {
+//   return (
+//     <div key={flower._id}>
+//       <p>{flower.title}</p>
+//     </div>          
+//   )
+// })}

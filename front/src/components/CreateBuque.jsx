@@ -11,7 +11,7 @@ import localActions from '../redux/actions/localActions'
     const [buqueName, setBuqueName]= useState();
 
     const dispatch = useDispatch();
-    const buque = useSelector(state=> state.local);
+    const buque = useSelector(state=> state?.local);
 
     let qtdTot = 0; 
     buque.forEach((flower) => {
@@ -23,26 +23,35 @@ import localActions from '../redux/actions/localActions'
         acc+cur.price*cur.qtd
     ,0));
     
-        console.log(buque)
 
     const buqueCreate = () =>{
         
         const newBuque = {
             title: buqueName,
             flowers: buque.map(flower=> {
-                return {flower: flower._id, qtd: flower.qtd}
+                return {flower: flower._id, title: flower.title, price: flower.price, qtd: flower.qtd}
             })
 
+        } 
+        console.log(newBuque)
+        try{
+            dispatch(buquesActions.add(newBuque))
+            document.getElementById('tit').value=''; 
+            dispatch(localActions.clear());
+            
+            
+        }catch(error){
+            console.error(error);
         }
-        dispatch(buquesActions.add(newBuque))
-     }
+        
+    }
 
     return(
         <>
         <div className='buq'>
             <h1 className='title'>Criar Buque</h1>
             <Flowersline/>
-            <table className='table'>
+            <table id='oi' className='table'>
                 <tbody>
                     {buque.map((item)=>(
                         <tr key={item._id}>
@@ -68,6 +77,7 @@ import localActions from '../redux/actions/localActions'
             <div className='butDiv'>
             <input placeholder="Nome"
                      required 
+                     id="tit"
                      name="buque"
                      className="form-control"
                      onChange={e=> setBuqueName(e.target.value)}

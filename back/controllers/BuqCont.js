@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
 		return res.status(400).send({ error: 'Error loading buques' });
 	}
 });
-//pegar uma
+//pegar umaa
 
 router.get('/:buqueId', async (req, res) => {
 	try {
@@ -41,6 +41,7 @@ router.get('/:buqueId', async (req, res) => {
 		return res.status(400).send({ error: 'Error loading buque' });
 	}
 });
+
 //Deletar
 
 router.delete('/:buqueId', async (req, res) => {
@@ -57,11 +58,10 @@ router.delete('/:buqueId', async (req, res) => {
 
 router.put('/:buqueId', async (req, res) => {
 	try {
-		const { title, flowers } = req.body;
+		const { title } = req.body;
 
 		const buque = await Buq.findByIdAndUpdate(req.params.buqueId, {
 			title,
-			flowers
 		}, { new: true });
 		return res.send({ buque});
 	} catch (err) {
@@ -69,7 +69,56 @@ router.put('/:buqueId', async (req, res) => {
 	}
 });
 
-//Deletar
+
+//Atualizar Qtdd
+
+router.put('/flower/:buqueId', async (req, res) => {
+	try {
+		const { _id, ...fields } = req.body;
+		const { buqueId } = req.params;
+
+		//{flowers:{$elemMatch:{flower:this._id}}}
+		const updateFieds = {};
+		const entries = Object.entries(fields)
+		
+		entries.forEach(([key, value]) => {
+			updateFieds[`flowers.$.${key}`] = value;
+		})
+
+		const buque = await Buq.findOneAndUpdate({_id: buqueId, "flowers._id": _id}, { $set: updateFieds}, {new: true})
+
+		return res.send({ buque });
+	} catch (err) {
+		console.warn(err)
+		return res.status(400).send({ error: 'Error updating buque' });
+	}
+});
+
+//zerar Qtddsp
+
+router.put('/zerar/:buqueid', async (req, res) => {
+	try {
+		const { buqueid } = req.params;
+		console.log(buqueid)
+		const buquee = await Buq.findOne({"_id" : buqueid}).exec();
+		console.log(buquee)
+
+		const flowers = buquee.flowers.map(flor=>{
+			flor.qtd= flor.qtd-flor.qtd;
+			return flor;
+		})
+
+		const buque = await Buq.findByIdAndUpdate(buqueid, {
+			flowers
+		}, { new: true });
+		return res.send({ buque});
+	} catch (err) {
+		console.warn(err)
+		return res.status(400).send({ error: 'Error updating buque' });
+	}
+});
+
+//Deletarr
 
 router.delete('/:buqueId', async (req, res) => {
 	try {

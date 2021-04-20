@@ -10,7 +10,7 @@ const flowersActions = {
         meta: { 
             offline: { 
                 effect: { 
-                    url:'http://localhost:3010/flower/g',
+                    url:'http://localhost:3011/flower/g',
                     method:'GET',
                 },
                 commit: { 
@@ -33,7 +33,7 @@ const flowersActions = {
             meta: { 
                 offline: { 
                     effect: { 
-                        url:'http://localhost:3010/flower/cre',
+                        url:'http://localhost:3011/flower/cre',
                         method:'POST',
                         json: flower
                     },
@@ -55,7 +55,7 @@ const flowersActions = {
         meta: { 
             offline: { 
                 effect: { 
-                    url:`http://localhost:3010/flower/${flower._id}`,
+                    url:`http://localhost:3011/flower/${flower._id}`,
                     method:'PUT',
                     json: flower
                 }
@@ -68,7 +68,7 @@ const flowersActions = {
         meta: { 
             offline: { 
                 effect: { 
-                    url:`http://localhost:3010/flower/${flower._id}`,
+                    url:`http://localhost:3011/flower/${flower._id}`,
                     method:'DELETE',
                 }
             }
@@ -80,7 +80,7 @@ const flowersActions = {
         meta: { 
             offline: { 
                 effect: { 
-                    url:`http://localhost:3010/flower/${flower._id}`,
+                    url:`http://localhost:3011/flower/${flower._id}`,
                     method:'GET',
                 }
             }

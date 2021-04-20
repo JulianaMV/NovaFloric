@@ -50,3 +50,4 @@ const flower = (state = inicialState, action) => {
 
 export default flower
 
+//{id: flower._id, title: flower.title, price: flower.price, qtd: flower.qtd}

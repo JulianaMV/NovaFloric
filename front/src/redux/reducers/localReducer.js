@@ -17,7 +17,7 @@ const local = (state = inicialState, action) => {
         }
         return flower;
       })
-      
+
       if(found)
         return newState;
       else return [...state, { ...payload, qtd: 1 }]
@@ -48,3 +48,34 @@ const local = (state = inicialState, action) => {
 
 export default local
 
+// case ACTIONS.buques.REMFLO:
+//   newState = []
+
+//   for (let i = 0; i < state.length; i++) {
+//     let buque = state[i];
+//     const flordobuque = buque.flowers.map(flor=>{
+//       if(flor?._id===payload._id)
+//       buque.flowers?.qtd > 1 && newState.push({...buque.flowers, qtd: buque.flowers.qtd - 1})
+//       else 
+//         newState.push(buque.flowers);
+//     })  
+//   }
+//     return newState;
+
+// case ACTIONS.buques.REMFLO:
+                  
+
+//   for (let i = 0; i < state.length; i++) {
+//   let buque = state[i];
+//   const newState = buque.flowers.map(flor=>{
+//   if(flor?._id===payload._id && flor?.qtd > 1 ){
+//     console.log(flor)
+//     return ({...flor, qtd: flor.qtd - 1})
+//   }
+  
+//   return (buque.flowers);
+//   })  
+//   return newState;
+//   }
+
+//   return newState;

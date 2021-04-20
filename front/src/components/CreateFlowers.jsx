@@ -15,8 +15,8 @@ const CreateFlowers = () => {
         e.preventDefault();
         try{
             await dispatch(flowersActions.add({title,price})) //imagen
-            setTitle()
-            setPrice()
+            document.getElementById('titlee').value=''; 
+            document.getElementById('pricee').value=''; 
             // setImage()
             
         }catch (error){
@@ -35,7 +35,7 @@ const CreateFlowers = () => {
                     required
                      type="text" 
                      name="title"
-                     id="title"
+                     id="titlee"
                      className="form-control"
                      placeholder="Flor" 
                      onChange={e=> setTitle(e.target.value)}
@@ -44,7 +44,7 @@ const CreateFlowers = () => {
                     required
                      type="number" 
                      name="price"
-                     id="price"
+                     id="pricee"
                      className="form-control"
                      placeholder="Preço" 
                      onChange={e=> setPrice(e.target.value)}

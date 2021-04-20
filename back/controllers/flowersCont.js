@@ -68,14 +68,17 @@ router.get('/g', async (req, res) => {
 
 //pegar um
 
-router.get('/:flowerId', async (req, res) => {
+router.param('flowerId', async(req, res, next, id) => {
 	try {
-		const flowers = await Flower.findById(req.params.flowerId);
-
-		return res.send(flowers);
+		req.flower = await Flower.findById(id)
+		next()
 	} catch (err) {
-		return res.status(400).send({ error: 'Error loading flower' });
+		next(err)
 	}
+})
+
+router.get('/:flowerId', (req, res) => {
+	return res.send(req.flower);
 });
 
 
@@ -83,11 +86,14 @@ router.get('/:flowerId', async (req, res) => {
 
 router.delete('/:flowerId', async (req, res) => {
 	try {
-		await Flower.findByIdAndRemove(req.params.flowerId);
+		await req.flower.remove();
 		return res.send('sucess in remove flower');
+	
 	} catch (err) {
-		return res.status(400).send({ error: 'Error deleting flower' });
+		return res.status(400).send({ error:err.message });
 	}
+
+
 });
 
 //Atualizar

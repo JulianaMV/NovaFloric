@@ -18,7 +18,7 @@ const buquesActions = {
         meta: { 
             offline: { 
                 effect: { 
-                    url:'http://localhost:3010/buq/',
+                    url:'http://localhost:3011/buq/',
                     method:'GET',
                     json: buques
                 },
@@ -42,7 +42,7 @@ const buquesActions = {
             meta: { 
                 offline: { 
                     effect: { 
-                        url:'http://localhost:3010/buq/',
+                        url:'http://localhost:3011/buq/',
                         method:'POST',
                         json: buque
                     },
@@ -58,14 +58,42 @@ const buquesActions = {
             }
         }
     },
+    clear: (buque) => ({
+        type: ACTIONS.buques.CLEAR,
+        payload: buque,
+        meta: { 
+            offline: { 
+                effect: { 
+                    url:`http://localhost:3011/buq/zerar/${buque._id}`,
+                    method:'PUT',
+                    json: buque
+                }
+            }
+        }
+      }),
+
     atualize:(buque)=>({
         type: ACTIONS.buques.ATUALIZE,
         payload: buque,
         meta: { 
             offline: { 
                 effect: { 
-                    url:'http://localhost:3010/buque/:buqueId',
+                    url:`http://localhost:3011/buq/${buque._id}`,
                     method:'PUT',
+                    json: buque
+                }
+            }
+        }
+    }),
+    atualizeFlower:(buqueId, {_id, qtd })=>({
+        type: ACTIONS.buques.ATUALIZE_FLOWER,
+        payload: { buqueId, flower: {_id, qtd }},
+        meta: { 
+            offline: { 
+                effect: { 
+                    url:`http://localhost:3011/buq/flower/${buqueId}`,
+                    method:'PUT',
+                    json: {_id, qtd}
                 }
             }
         }
@@ -76,19 +104,7 @@ const buquesActions = {
         meta: { 
             offline: { 
                 effect: { 
-                    url:'http://localhost:3010/buque/:buqueId',
-                    method:'DELETE',
-                }
-            }
-        }
-    }),
-    remove:(buque)=>({
-        type: ACTIONS.buques.REMOVE,
-        payload: buque,
-        meta: { 
-            offline: { 
-                effect: { 
-                    url:'http://localhost:3010/buque/:buqueId',
+                    url:`http://localhost:3011/buq/${buque._id}`,
                     method:'DELETE',
                 }
             }
@@ -100,7 +116,7 @@ const buquesActions = {
         meta: { 
             offline: { 
                 effect: { 
-                    url:`http://localhost:3010/buque/${buque._id}`,
+                    url:`http://localhost:3011/buq/${buque._id}`,
                     method:'GET',
                 }
             }

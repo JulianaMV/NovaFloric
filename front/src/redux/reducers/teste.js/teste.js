@@ -30,33 +30,9 @@ const buque = (state = inicialState, action) => {
                 else return [...state, { ...payload, isOffline: false}]
               
               case ACTIONS.buques.CLEAR:
-                // var id = payload._id;
-                // console.log(id)
-                // newState=state.map((buque=>{
-                //   if(buque?._id === id){
-                //     var newFlowers = buque.flowers.map(flor => {
-                //         flor.qtd=0
-                //         return flor;
-                //     })
-                //     return {...buque, flowers: newFlowers}
-                //   }
-                //   return buque;
-                // }))
+                  return inicialState;
 
-                //   return newState;
-              return inicialState;
-
-              case ACTIONS.buques.ATUALIZE:
-                newState = state.map(buque => {
-                  if(buque?._id === payload._id)  {
-                    return {...buque, isOffline: false}
-                  }
-                    return buque;
-                  })
-                    
-                    return newState;
-
-            case ACTIONS.buques.ATUALIZE_FLOWER:
+              case ACTIONS.buques.ATUALIZE_FLOWER:
                 var {flower, buqueId} = payload;
 
                 // Encontrar o buque

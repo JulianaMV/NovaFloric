@@ -10,11 +10,13 @@ const BuqSchema = new mongoose.Schema({
 	},
 	flowers: [{
 		flower: {
-		type: mongoose.Schema.Types.ObjectId,
-		required: true,
-		ref: 'Flower'
+			type: mongoose.Schema.Types.ObjectId,
+			required: true,
+			ref: 'Flower'
 		},
 		qtd: Number,
+		title: String,
+		price: Number,
 	}],
 });
 

@@ -4,7 +4,6 @@ import { useDispatch, useSelector} from 'react-redux'
 import { useParams } from "react-router-dom";
 import buqueActions from '../redux/actions/buquesActions'
 import buquesThunks from '../redux/thunks/buquesThunks'
-import { useHistory } from 'react-router-dom';
 
 
 
@@ -12,7 +11,6 @@ import { useHistory } from 'react-router-dom';
 export default function Details(){
     const [title, setTitle] = useState();
     const dispatch = useDispatch();
-    const history = useHistory(); 
     const {id} = useParams();
     console.log(id)
 
@@ -30,9 +28,7 @@ export default function Details(){
     async function handleBuque (e) {
         e.preventDefault();
         try{
-            await dispatch(buqueActions.atualize({_id: id, title: title}))
-            history.push(`/buque`);
-            alert("atualizada com sucesso!");
+            await dispatch(buqueActions.atualize({_id: id, title: title, flowers: state.flowers}))
         }catch (error){
             console.error(error);
         }
@@ -43,7 +39,6 @@ export default function Details(){
         e.preventDefault();
         try{
             await dispatch(buqueActions.delete({_id:id}))
-            history.push(`/buque`);
         }catch (error){
             console.error(error);
         }
@@ -75,20 +70,20 @@ export default function Details(){
                 </div>
                 <table className='table'>
                     <tbody>
-                    {state?.flowers.map((item)=>(
+                    {state.flowers?.map((item)=>(
                         <tr key={item._id}>
                             <td>{item.title}</td>
                             <td> R$ {(item.price * item.qtd).toFixed(2)}</td>
                             <td> 
-                                <button onClick={()=> dispatch(buqueActions.atualizeFlower(id, {...item, qtd: item.qtd - 1 }))}>-</button> 
+                                <button onClick={()=> dispatch(buqueActions.remflo(item))}>-</button> 
                                 {item.qtd}
-                                <button onClick={()=> dispatch(buqueActions.atualizeFlower(id, {...item, qtd: item.qtd + 1 }))}>+</button> 
+                                <button onClick={()=> dispatch(buqueActions.addflo(item))}>+</button> 
                             </td>
                          </tr>
                      ))}
                     </tbody>
                 </table>
-                <button onClick={()=> dispatch(buqueActions.clear(state))}>
+                <button onClick={()=> dispatch(buqueActions.clear())}>
                  REMOVER FLORES
                 </button>
                 </form>
